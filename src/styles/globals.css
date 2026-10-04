@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "@fontsource/inter";
+
+@theme {
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-accent-glow: var(--color-accent-glow);
+  --color-accent-glow-strong: var(--color-accent-glow-strong);
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/ClashDisplay-Regular.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/ClashDisplay-Medium.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/ClashDisplay-Semibold.otf");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Clash Display";
+  src: url("../assets/fonts/ClashDisplay-Bold.otf");
+  font-weight: 700;
+}
+
+:root {
+  --accent-rgb: 16 185 129; /* Default Emerald */
+  --accent-hover-rgb: 5 150 105;
+  --color-accent: rgb(16 185 129);
+  --color-accent-hover: rgb(5 150 105);
+  --color-accent-glow: rgb(16 185 129 / 0.08);
+  --color-accent-glow-strong: rgb(16 185 129 / 0.20);
+}
+
+/* Accent Themes */
+body.theme-emerald {
+  --accent-rgb: 16 185 129;
+  --accent-hover-rgb: 5 150 105;
+  --color-accent: rgb(16 185 129);
+  --color-accent-hover: rgb(5 150 105);
+  --color-accent-glow: rgb(16 185 129 / 0.08);
+  --color-accent-glow-strong: rgb(16 185 129 / 0.20);
+}
+
+body.theme-violet {
+  --accent-rgb: 139 92 246;
+  --accent-hover-rgb: 124 58 237;
+  --color-accent: rgb(139 92 246);
+  --color-accent-hover: rgb(124 58 237);
+  --color-accent-glow: rgb(139 92 246 / 0.08);
+  --color-accent-glow-strong: rgb(139 92 246 / 0.20);
+}
+
+body.theme-amber {
+  --accent-rgb: 245 158 11;
+  --accent-hover-rgb: 217 119 6;
+  --color-accent: rgb(245 158 11);
+  --color-accent-hover: rgb(217 119 6);
+  --color-accent-glow: rgb(245 158 11 / 0.08);
+  --color-accent-glow-strong: rgb(245 158 11 / 0.20);
+}
+
+body.theme-rose {
+  --accent-rgb: 244 63 94;
+  --accent-hover-rgb: 225 29 72;
+  --color-accent: rgb(244 63 94);
+  --color-accent-hover: rgb(225 29 72);
+  --color-accent-glow: rgb(244 63 94 / 0.08);
+  --color-accent-glow-strong: rgb(244 63 94 / 0.20);
+}
+
+.clash {
+  font-family: "Clash Display", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #030303;
+  color: #f4f4f5;
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c1c1e;
+  border-radius: 5px;
+  border: 2px solid #030303;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--accent-rgb));
+}
+
+/* Grid & Noise Utilities */
+.grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0%25 0%25 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+}
+
+/* Shimmer glow keyframes for cards */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.glow-animation {
+  animation: pulseGlow 6s infinite ease-in-out;
+}
