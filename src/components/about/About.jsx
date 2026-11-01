@@ -5,6 +5,8 @@ import { HiAcademicCap, HiClock, HiCodeBracket, HiSparkles, HiCommandLine, HiSqu
 import { FaChessQueen, FaBookOpen } from "react-icons/fa";
 import Container from "../common/Container";
 import { personalInfo } from "../../data/personalInfo";
+import mduLogo from "../../assets/images/education/mdu.png";
+import gmssssLogo from "../../assets/images/education/gmssss.png";
 
 const stats = personalInfo.stats;
 
@@ -101,23 +103,89 @@ const About = () => {
             whileHover={{ y: -4 }}
             onMouseEnter={() => playSound("hover")}
             transition={{ duration: 0.4, delay: 0.1 }}
-            className="p-6 sm:p-8 rounded-[32px] border border-zinc-800 bg-zinc-950/40 backdrop-blur-sm overflow-hidden group hover:border-accent/30 transition-all duration-300 flex flex-col justify-between"
+            className="p-5 sm:p-6 md:p-7 rounded-[32px] border border-zinc-800 bg-zinc-950/40 backdrop-blur-sm overflow-hidden group hover:border-accent/30 transition-all duration-300 flex flex-col justify-between"
           >
             <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(var(--accent-rgb),0.03),transparent_45%)]" />
             
             <div>
-              <div className="flex items-center gap-3 mb-6 text-zinc-400">
-                <HiAcademicCap className="text-accent" size={22} />
-                <span className="text-xs font-mono uppercase tracking-widest">Education</span>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2.5 text-zinc-400">
+                  <HiAcademicCap className="text-accent" size={20} />
+                  <span className="text-xs font-mono uppercase tracking-widest">Education</span>
+                </div>
+                <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full bg-accent/10 border border-accent/20 text-accent font-semibold">
+                  3 Qualifications
+                </span>
               </div>
-              <h4 className="text-lg font-semibold text-white">{personalInfo.education.degree}</h4>
-              <p className="text-zinc-400 text-sm mt-2 font-medium">{personalInfo.education.college}</p>
-              <p className="text-zinc-500 text-xs mt-1">{personalInfo.education.university}</p>
+
+              {/* Education Stack */}
+              <div className="flex flex-col gap-3">
+                {/* 1. BCA Degree (Top) */}
+                <div className="p-3 rounded-2xl border border-zinc-900 bg-black/40 hover:border-zinc-800 transition-colors">
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-zinc-800 p-1 flex items-center justify-center shrink-0">
+                      <img src={mduLogo} alt="MDU Rohtak" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1">
+                        <h4 className="text-xs sm:text-sm font-semibold text-white truncate">BCA (Degree)</h4>
+                        <span className="text-[11px] font-mono font-bold text-accent shrink-0">71.03%</span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-zinc-400 font-medium truncate mt-0.5">DAV Centenary College</p>
+                      <div className="flex items-center justify-between gap-1 mt-1 text-[10px] sm:text-[11px] text-zinc-500 font-mono">
+                        <span className="truncate">Affiliated to M.D.U., Rohtak</span>
+                        <span className="shrink-0 text-zinc-400 bg-zinc-900 px-1.5 py-0.5 rounded border border-zinc-800/80">2023–26</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Class 12th (Senior Secondary) */}
+                <div className="p-3 rounded-2xl border border-zinc-900 bg-black/40 hover:border-zinc-800 transition-colors">
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-zinc-800 p-1 flex items-center justify-center shrink-0">
+                      <img src={gmssssLogo} alt="GMSSSS" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1">
+                        <h4 className="text-xs sm:text-sm font-semibold text-white truncate">Class 12th (Sr. Sec.)</h4>
+                        <span className="text-[11px] font-mono font-bold text-emerald-400 shrink-0">77.2%</span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-zinc-400 font-medium truncate mt-0.5">Govt. Model Sanskriti Sr. Sec. School</p>
+                      <div className="flex items-center gap-1.5 mt-1 text-[10px] sm:text-[11px] text-zinc-500 font-mono">
+                        <span>HBSE Board</span>
+                        <span>•</span>
+                        <span className="text-zinc-400">Science Stream</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Class 10th (Secondary) */}
+                <div className="p-3 rounded-2xl border border-zinc-900 bg-black/40 hover:border-zinc-800 transition-colors">
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-white/5 border border-zinc-800 p-1 flex items-center justify-center shrink-0">
+                      <img src={gmssssLogo} alt="GMSSSS" className="w-full h-full object-contain" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1">
+                        <h4 className="text-xs sm:text-sm font-semibold text-white truncate">Class 10th (Secondary)</h4>
+                        <span className="text-[11px] font-mono font-bold text-amber-400 shrink-0">92.8%</span>
+                      </div>
+                      <p className="text-[11px] sm:text-xs text-zinc-400 font-medium truncate mt-0.5">Govt. Model Sanskriti Sr. Sec. School</p>
+                      <div className="flex items-center gap-1.5 mt-1 text-[10px] sm:text-[11px] text-zinc-500 font-mono">
+                        <span>HBSE Board</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             
-            <div className="mt-8 border-t border-zinc-900 pt-4 flex items-center justify-between text-xs font-mono text-zinc-400">
-              <span>Duration</span>
-              <span className="text-white bg-zinc-900 px-2.5 py-1 rounded-full border border-zinc-800">{personalInfo.education.duration}</span>
+            <div className="mt-4 border-t border-zinc-900 pt-3 flex items-center justify-between text-[11px] font-mono text-zinc-500">
+              <span>Academic Foundations</span>
+              <span className="text-zinc-400 font-medium">Science & Computer Applications</span>
             </div>
           </motion.div>
 

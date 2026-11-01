@@ -29,6 +29,35 @@ export const personalInfo = {
     college: "DAV Centenary College",
     university: "Affiliated to M.D. University, Rohtak (HR)",
     duration: "2023 – 2026",
+    score: "71.03%",
+    history: [
+      {
+        id: "bca",
+        degree: "Bachelor of Computer Applications (BCA)",
+        institution: "DAV Centenary College",
+        affiliation: "M.D. University, Rohtak",
+        score: "71.03%",
+        duration: "2023 – 2026",
+        logoKey: "mdu",
+      },
+      {
+        id: "12th",
+        degree: "Class 12th (Senior Secondary)",
+        stream: "Science Stream",
+        institution: "Govt. Model Sanskriti Sr. Sec. School",
+        board: "HBSE Board",
+        score: "77.2%",
+        logoKey: "gmssss",
+      },
+      {
+        id: "10th",
+        degree: "Class 10th (Secondary)",
+        institution: "Govt. Model Sanskriti Sr. Sec. School",
+        board: "HBSE Board",
+        score: "92.8%",
+        logoKey: "gmssss",
+      },
+    ],
   },
 
   // 📝 Biography

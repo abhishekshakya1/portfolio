@@ -11,6 +11,71 @@ import portfolioImg from "../assets/images/projects/portfolio.png";
  */
 export const projects = [
   {
+    title: "PulseEngine",
+    category: "Backend",
+    badge: "Flagship Production SaaS",
+    isLive: true,
+    description:
+      "A high-throughput distributed telemetry ingestion pipeline and autonomous AI SRE platform with sub-3ms Redis queuing, Neon PostgreSQL bulk batching, and Gemini 3.8 Flash root-cause diagnosis.",
+    longDescription:
+      "PulseEngine decouples high-frequency telemetry ingestion from database persistence through an in-memory Redis buffer and asynchronous bulk-batch worker processing over 100k+ events/sec without exhausting connection pools. When an incident or SLA degradation occurs, an integrated Gemini 3.8 Flash AI SRE Copilot autonomously performs deep root-cause analysis (RCA), assesses blast radius, and generates executable remediation commands with 1-click execution.",
+    technologies: ["Next.js 16", "TypeScript", "Redis (Upstash)", "PostgreSQL (Neon)", "Gemini 3.8 Flash", "Docker", "Polar.sh", "Tailwind CSS", "Prisma"],
+    image: pulseEngineImg,
+    github: "https://github.com/abhishekshakya1/engine",
+    live: "https://engine-lovat-beta.vercel.app/",
+    features: [
+      "Sub-3ms ingestion latency via in-memory Redis buffer and asynchronous worker bulk batching to Neon PostgreSQL.",
+      "Autonomous AI SRE Copilot powered by Google Gemini 3.8 Flash delivering instant root-cause analysis & copyable fix commands.",
+      "Real-time telemetry streaming dashboard tracking the 4 Golden Signals: Latency, Throughput, Error Rates, and Saturation.",
+      "Enterprise multi-channel alerting with automated Telegram webhook triggers for severe latency and error spikes.",
+      "Polar.sh subscription billing integration with automated tier quota metering, soft caps, and instant webhook upgrades.",
+      "Production-grade Docker containerization with automated multi-stage builds and zero-downtime deployment."
+    ],
+    architecture: {
+      nodes: [
+        { name: "Client / SDK Telemetry", type: "Edge Producer" },
+        { name: "Next.js 16 Edge Route", type: "Ingestion API" },
+        { name: "Upstash Redis Queue", type: "In-Memory Buffer" },
+        { name: "Async Worker Daemon", type: "Bulk Batcher" },
+        { name: "Neon Serverless Postgres", type: "Persistent Storage" },
+        { name: "Gemini 3.8 Flash SRE", type: "AI Diagnosis Engine" }
+      ],
+      connections: [
+        "Application Telemetry -> Edge Ingestion API -> LPUSH into Redis buffer (< 3ms response)",
+        "Background Worker -> RPOPLPUSH in micro-batches (500 items) -> Prisma bulk insert into Neon DB",
+        "SLA Degradation Trigger -> Telemetry snapshot dispatched to Gemini 3.8 Flash for instant RCA & fix commands",
+        "Polar.sh Webhook -> Instant quota elevation and Pro tier unlocks in Neon DB"
+      ]
+    },
+    codeSnippet: `// Telemetry Ingestion Pipeline: Redis Buffering with <3ms Response
+export async function POST(req: NextRequest) {
+  const startTime = Date.now();
+  const apiKey = req.headers.get("x-engine-key");
+
+  // 1. O(1) Cache validation of API Key & Tenant Quota
+  const tenant = await getCachedTenant(apiKey);
+  if (!tenant || tenant.eventsConsumed >= tenant.monthlyQuota) {
+    return NextResponse.json({ error: "Quota Exceeded or Invalid Key" }, { status: 429 });
+  }
+
+  // 2. Buffer telemetry payload into Redis stream (LPUSH)
+  const event = await req.json();
+  await redis.lpush("telemetry:stream", JSON.stringify({
+    ...event,
+    tenantId: tenant.id,
+    timestamp: new Date().toISOString()
+  }));
+
+  // 3. Fire-and-forget anomaly detection check
+  if (event.statusCode >= 500 || event.durationMs > 1500) {
+    await triggerGeminiSREDiagnosis({ tenantId: tenant.id, incident: event });
+  }
+
+  return NextResponse.json({ success: true, latencyMs: Date.now() - startTime }, { status: 202 });
+}`
+  },
+
+  {
     title: "CareConnect",
     category: "Full Stack",
     badge: "Flagship Live Project",
@@ -83,71 +148,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );`
-  },
-
-  {
-    title: "PulseEngine",
-    category: "Backend",
-    badge: "Flagship Production SaaS",
-    isLive: true,
-    description:
-      "A high-throughput distributed telemetry ingestion pipeline and autonomous AI SRE platform with sub-3ms Redis queuing, Neon PostgreSQL bulk batching, and Gemini 3.8 Flash root-cause diagnosis.",
-    longDescription:
-      "PulseEngine decouples high-frequency telemetry ingestion from database persistence through an in-memory Redis buffer and asynchronous bulk-batch worker processing over 100k+ events/sec without exhausting connection pools. When an incident or SLA degradation occurs, an integrated Gemini 3.8 Flash AI SRE Copilot autonomously performs deep root-cause analysis (RCA), assesses blast radius, and generates executable remediation commands with 1-click execution.",
-    technologies: ["Next.js 16", "TypeScript", "Redis (Upstash)", "PostgreSQL (Neon)", "Gemini 3.8 Flash", "Docker", "Polar.sh", "Tailwind CSS", "Prisma"],
-    image: pulseEngineImg,
-    github: "https://github.com/abhishekshakya1/engine",
-    live: "https://engine-lovat-beta.vercel.app/",
-    features: [
-      "Sub-3ms ingestion latency via in-memory Redis buffer and asynchronous worker bulk batching to Neon PostgreSQL.",
-      "Autonomous AI SRE Copilot powered by Google Gemini 3.8 Flash delivering instant root-cause analysis & copyable fix commands.",
-      "Real-time telemetry streaming dashboard tracking the 4 Golden Signals: Latency, Throughput, Error Rates, and Saturation.",
-      "Enterprise multi-channel alerting with automated Telegram webhook triggers for severe latency and error spikes.",
-      "Polar.sh subscription billing integration with automated tier quota metering, soft caps, and instant webhook upgrades.",
-      "Production-grade Docker containerization with automated multi-stage builds and zero-downtime deployment."
-    ],
-    architecture: {
-      nodes: [
-        { name: "Client / SDK Telemetry", type: "Edge Producer" },
-        { name: "Next.js 16 Edge Route", type: "Ingestion API" },
-        { name: "Upstash Redis Queue", type: "In-Memory Buffer" },
-        { name: "Async Worker Daemon", type: "Bulk Batcher" },
-        { name: "Neon Serverless Postgres", type: "Persistent Storage" },
-        { name: "Gemini 3.8 Flash SRE", type: "AI Diagnosis Engine" }
-      ],
-      connections: [
-        "Application Telemetry -> Edge Ingestion API -> LPUSH into Redis buffer (< 3ms response)",
-        "Background Worker -> RPOPLPUSH in micro-batches (500 items) -> Prisma bulk insert into Neon DB",
-        "SLA Degradation Trigger -> Telemetry snapshot dispatched to Gemini 3.8 Flash for instant RCA & fix commands",
-        "Polar.sh Webhook -> Instant quota elevation and Pro tier unlocks in Neon DB"
-      ]
-    },
-    codeSnippet: `// Telemetry Ingestion Pipeline: Redis Buffering with <3ms Response
-export async function POST(req: NextRequest) {
-  const startTime = Date.now();
-  const apiKey = req.headers.get("x-engine-key");
-
-  // 1. O(1) Cache validation of API Key & Tenant Quota
-  const tenant = await getCachedTenant(apiKey);
-  if (!tenant || tenant.eventsConsumed >= tenant.monthlyQuota) {
-    return NextResponse.json({ error: "Quota Exceeded or Invalid Key" }, { status: 429 });
-  }
-
-  // 2. Buffer telemetry payload into Redis stream (LPUSH)
-  const event = await req.json();
-  await redis.lpush("telemetry:stream", JSON.stringify({
-    ...event,
-    tenantId: tenant.id,
-    timestamp: new Date().toISOString()
-  }));
-
-  // 3. Fire-and-forget anomaly detection check
-  if (event.statusCode >= 500 || event.durationMs > 1500) {
-    await triggerGeminiSREDiagnosis({ tenantId: tenant.id, incident: event });
-  }
-
-  return NextResponse.json({ success: true, latencyMs: Date.now() - startTime }, { status: 202 });
-}`
   },
 
   {

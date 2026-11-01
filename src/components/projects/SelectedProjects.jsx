@@ -1,22 +1,13 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "../common/ThemeContext";
 import ProjectCard from "./ProjectCard";
 import ProjectDetailsModal from "./ProjectDetailsModal";
 import { projects } from "../../data/projects";
 import Container from "../common/Container";
 
-const categories = ["All", "Full Stack", "Backend", "Frontend"];
-
 const SelectedProjects = () => {
-  const { playSound } = useTheme();
-  const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const filteredProjects = activeFilter === "All"
-    ? projects
-    : projects.filter(p => p.category === activeFilter);
 
   const handleOpenDetails = (project) => {
     setSelectedProject(project);
@@ -45,47 +36,12 @@ const SelectedProjects = () => {
               Selected Projects
             </h2>
           </motion.div>
-
-          {/* Project Filters */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex gap-2 rounded-2xl border border-zinc-900 bg-zinc-950/60 p-1.5 backdrop-blur-sm self-start md:self-auto overflow-x-auto max-w-full"
-          >
-            {categories.map((cat) => {
-              const isActive = activeFilter === cat;
-              return (
-                <button
-                  key={cat}
-                  onMouseEnter={() => playSound("hover")}
-                  onClick={() => {
-                    playSound("click");
-                    setActiveFilter(cat);
-                  }}
-                  className={`relative rounded-xl px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors duration-300 cursor-pointer ${
-                    isActive ? "text-black" : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  {isActive && (
-                    <motion.span
-                      layoutId="activeProjectsTab"
-                      className="absolute inset-0 rounded-xl bg-accent"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat}</span>
-                </button>
-              );
-            })}
-          </motion.div>
         </div>
 
         {/* Project cards vertical grid layout */}
         <motion.div layout className="flex flex-col gap-10">
           <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project) => (
+            {projects.map((project) => (
               <motion.div
                 layout
                 key={project.title}
