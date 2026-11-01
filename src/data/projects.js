@@ -21,7 +21,7 @@ export const projects = [
       "PulseEngine decouples high-frequency telemetry ingestion from database persistence through an in-memory Redis buffer and asynchronous bulk-batch worker processing over 100k+ events/sec without exhausting connection pools. When an incident or SLA degradation occurs, an integrated Gemini 3.8 Flash AI SRE Copilot autonomously performs deep root-cause analysis (RCA), assesses blast radius, and generates executable remediation commands with 1-click execution.",
     technologies: ["Next.js 16", "TypeScript", "Redis (Upstash)", "PostgreSQL (Neon)", "Gemini 3.8 Flash", "Docker", "Polar.sh", "Tailwind CSS", "Prisma"],
     image: pulseEngineImg,
-    github: "https://github.com/abhishekshakya1/engine",
+    github: "https://github.com/abhishekshakya1/pulse-engine",
     live: "https://engine-lovat-beta.vercel.app/",
     features: [
       "Sub-3ms ingestion latency via in-memory Redis buffer and asynchronous worker bulk batching to Neon PostgreSQL.",
