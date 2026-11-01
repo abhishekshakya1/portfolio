@@ -124,7 +124,7 @@ export const techStack = [
     color: "border-violet-500/20 bg-violet-500/10 text-violet-400",
     skills: [
       {
-        name: "LeetCode (116+ DSA)",
+        name: "LeetCode (130+ DSA)",
         icon: SiLeetcode,
         iconColor: "#FFA116",
         url: personalInfo.socials.leetcode.url,
