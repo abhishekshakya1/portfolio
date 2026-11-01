@@ -20,7 +20,7 @@ export const personalInfo = {
     "Full Stack Engineer",
     "MERN & Next.js Developer",
     "Backend & API Systems",
-    "DSA Problem Solver (116+ Solved)",
+    "DSA Problem Solver (130+ Solved)",
   ],
 
   // 🎓 Education & Journey Credentials
@@ -66,12 +66,12 @@ export const personalInfo = {
     short:
       "A dedicated Bachelor of Computer Applications (BCA '26) student and ambitious Full Stack Engineer. I build robust web architectures using modern TypeScript, Next.js, MERN, and PostgreSQL ecosystems.",
     detailed:
-      "My engineering approach centers around clean layered architecture (decoupling Controllers, Services, and Repositories), solving network synchronization challenges like refresh token race conditions, and maintaining strong algorithmic discipline with 116+ DSA problems solved in JavaScript on LeetCode.",
+      "My engineering approach centers around clean layered architecture (decoupling Controllers, Services, and Repositories), solving network synchronization challenges like refresh token race conditions, and maintaining strong algorithmic discipline with 130+ DSA problems solved in JavaScript on LeetCode.",
   },
 
   // 📊 Verifiable Metrics
   stats: [
-    { value: "116+", label: "LeetCode Solved" },
+    { value: "130+", label: "LeetCode Solved" },
     { value: "03+", label: "Full Stack Apps" },
     { value: "100%", label: "Clean Code & Tests" },
   ],
@@ -92,7 +92,7 @@ export const personalInfo = {
     leetcode: {
       label: "LeetCode",
       url: "https://leetcode.com/u/1_abhishekshakya/", // <-- Yahan apna LeetCode username / URL daalo
-      handle: "116+ Solved (JS)",
+      handle: "130+ Solved (JS)",
     },
     twitter: {
       label: "Twitter (X)",

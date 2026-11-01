@@ -47,9 +47,9 @@ export const timelineData = [
     icon: "rocket",
     description:
       "Scaling into production-grade distributed architectures, Next.js, TypeScript, PostgreSQL with Prisma ORM, while maintaining daily DSA problem-solving discipline on LeetCode.",
-    skills: ["Next.js", "TypeScript", "PostgreSQL", "Prisma ORM", "Redis", "LeetCode (116+ Solved)"],
+    skills: ["Next.js", "TypeScript", "PostgreSQL", "Prisma ORM", "Redis", "LeetCode (130+ Solved)"],
     achievements: [
-      "Solved 116+ DSA problems in JavaScript on LeetCode focusing on sliding window, two pointers, and DP.",
+      "Solved 130+ DSA problems in JavaScript on LeetCode focusing on sliding window, two pointers, and DP.",
       "Architecting PulseEngine: distributed task processing engine with Redis queues and worker pools.",
       "Publishing engineering deep dives and system architecture breakdowns on LinkedIn."
     ]

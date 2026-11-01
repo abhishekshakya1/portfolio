@@ -161,7 +161,7 @@ api.interceptors.response.use(
     technologies: ["React", "Tailwind CSS v4", "Framer Motion", "Web Audio API", "Vite"],
     image: portfolioImg,
     github: "https://github.com/abhishekshakya1/portfolio",
-    live: "https://abhishek-portfolio.vercel.app",
+    live: "https://portfolio-flame-alpha-c7t4ygde0v.vercel.app/",
     features: [
       "Dynamic multi-theme CSS variable engine switching between Emerald, Violet, Amber, and Rose.",
       "Zero-asset audio feedback synthesized dynamically using the browser Web Audio API.",

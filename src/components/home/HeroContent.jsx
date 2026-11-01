@@ -91,7 +91,7 @@ const HeroContent = () => {
         className="mt-4 sm:mt-6 max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-zinc-400 font-normal"
       >
         <span className="block sm:hidden">
-          Building resilient full-stack web applications with React, Next.js, Node.js & PostgreSQL, backed by 116+ DSA problems solved on LeetCode.
+          Building resilient full-stack web applications with React, Next.js, Node.js & PostgreSQL, backed by 130+ DSA problems solved on LeetCode.
         </span>
         <span className="hidden sm:inline">
           Full Stack Engineer specializing in resilient web architectures, clean decoupled backend microservices, and high-performance interactive interfaces using React, Next.js, Node.js, PostgreSQL, and MongoDB.

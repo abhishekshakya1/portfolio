@@ -30,6 +30,6 @@ export const skills = [
   { name: "MongoDB", icon: SiMongodb },
   { name: "Prisma", icon: SiPrisma },
   { name: "Tailwind CSS", icon: SiTailwindcss },
-  { name: "DSA (116+ Solved)", icon: SiLeetcode },
+  { name: "DSA (130+ Solved)", icon: SiLeetcode },
   { name: "Git & GitHub", icon: FaGithub },
 ];
