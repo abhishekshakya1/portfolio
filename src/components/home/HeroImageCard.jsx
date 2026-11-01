@@ -1,9 +1,10 @@
+import { useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useTheme } from "../common/ThemeContext";
-import profileImage from "../../assets/images/profile/abhishek.png";
 
 const HeroImageCard = () => {
   const { playSound } = useTheme();
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   // Motion values for 3D tilt effect
   const x = useMotionValue(0);
@@ -53,10 +54,19 @@ const HeroImageCard = () => {
             {/* Ambient Backglow */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgb(var(--accent-rgb)/0.25),transparent_70%)]" />
             
+            {/* Shimmer skeleton before load */}
+            {!imgLoaded && (
+              <div className="absolute inset-0 bg-zinc-900 animate-pulse z-15" />
+            )}
+
             <img
-              src={profileImage}
+              src="/profile.png"
               alt="Abhishek Kumar — Full Stack Engineer"
-              className="w-full h-full object-cover relative z-10"
+              fetchpriority="high"
+              decoding="async"
+              loading="eager"
+              onLoad={() => setImgLoaded(true)}
+              className={`w-full h-full object-cover relative z-10 transition-opacity duration-500 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
             />
             {/* Shadow overlay at bottom */}
             <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent z-20 pointer-events-none" />
@@ -124,19 +134,31 @@ const HeroImageCard = () => {
             <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-900/20 to-zinc-950" />
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgb(var(--accent-rgb)/0.15),transparent_65%)] transition-colors duration-1000" />
             
+            {/* Shimmer skeleton before load */}
+            {!imgLoaded && (
+              <div className="absolute inset-0 bg-zinc-900/80 animate-pulse z-15 flex items-center justify-center">
+                <span className="h-6 w-6 rounded-full border-2 border-accent/40 border-t-accent animate-spin" />
+              </div>
+            )}
+
             <img
-              src={profileImage}
+              src="/profile.png"
               alt="Abhishek Kumar — Full Stack Engineer"
-              className="
+              fetchpriority="high"
+              decoding="async"
+              loading="eager"
+              onLoad={() => setImgLoaded(true)}
+              className={`
                 aspect-[4/5]
                 w-full
                 object-cover
-                transition-transform
+                transition-all
                 duration-500
                 group-hover:scale-105
                 relative
                 z-10
-              "
+                ${imgLoaded ? 'opacity-100' : 'opacity-0'}
+              `}
             />
             {/* Glass Gradient overlay to smoothly blend cut shoulders */}
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-95 z-20 pointer-events-none" />

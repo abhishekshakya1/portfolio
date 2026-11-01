@@ -125,7 +125,7 @@ const About = () => {
                 <div className="p-3 rounded-2xl border border-zinc-900 bg-black/40 hover:border-zinc-800 transition-colors">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-white/5 border border-zinc-800 p-1 flex items-center justify-center shrink-0">
-                      <img src={mduLogo} alt="MDU Rohtak" className="w-full h-full object-contain" />
+                      <img src={mduLogo} alt="MDU Rohtak" loading="lazy" decoding="async" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">
@@ -145,7 +145,7 @@ const About = () => {
                 <div className="p-3 rounded-2xl border border-zinc-900 bg-black/40 hover:border-zinc-800 transition-colors">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-white/5 border border-zinc-800 p-1 flex items-center justify-center shrink-0">
-                      <img src={gmssssLogo} alt="GMSSSS" className="w-full h-full object-contain" />
+                      <img src={gmssssLogo} alt="GMSSSS" loading="lazy" decoding="async" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">
@@ -166,7 +166,7 @@ const About = () => {
                 <div className="p-3 rounded-2xl border border-zinc-900 bg-black/40 hover:border-zinc-800 transition-colors">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-white/5 border border-zinc-800 p-1 flex items-center justify-center shrink-0">
-                      <img src={gmssssLogo} alt="GMSSSS" className="w-full h-full object-contain" />
+                      <img src={gmssssLogo} alt="GMSSSS" loading="lazy" decoding="async" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">

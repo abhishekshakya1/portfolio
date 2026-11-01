@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { HiArrowTopRightOnSquare, HiMiniQueueList } from "react-icons/hi2";
 import { FaGithub } from "react-icons/fa";
@@ -5,6 +6,7 @@ import { useTheme } from "../common/ThemeContext";
 
 const ProjectCard = ({ project, onOpenDetails }) => {
   const { playSound } = useTheme();
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   return (
     <motion.article
@@ -56,19 +58,28 @@ const ProjectCard = ({ project, onOpenDetails }) => {
         </div>
         
         {/* Screenshot Image */}
-        <div className="flex-1 overflow-hidden relative">
+        <div className="flex-1 overflow-hidden relative bg-zinc-950">
+          {!imgLoaded && (
+            <div className="absolute inset-0 bg-zinc-900/80 animate-pulse flex items-center justify-center z-10">
+              <span className="h-5 w-5 rounded-full border-2 border-zinc-700 border-t-accent animate-spin" />
+            </div>
+          )}
           <img
             src={project.image}
             alt={project.title}
-            className="
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setImgLoaded(true)}
+            className={`
               h-full
               w-full
               object-cover
               object-top
-              transition-transform
+              transition-all
               duration-700
               group-hover:scale-105
-            "
+              ${imgLoaded ? "opacity-100" : "opacity-0"}
+            `}
           />
           {/* Glass Overlay on Hover */}
           <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
