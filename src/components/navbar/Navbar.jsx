@@ -137,7 +137,7 @@ const Navbar = () => {
 
             {/* Resume Button (Desktop Only) */}
             <a
-              href="/resume.pdf"
+              href="/resume.pdf?v=2"
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={() => playSound("hover")}
@@ -183,7 +183,7 @@ const Navbar = () => {
               ))}
 
               <a
-                href="/resume.pdf"
+                href="/resume.pdf?v=2"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playSound("click")}

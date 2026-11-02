@@ -137,7 +137,7 @@ const HeroContent = () => {
         </a>
 
         <a
-          href="/resume.pdf"
+          href="/resume.pdf?v=2"
           target="_blank"
           rel="noopener noreferrer"
           onMouseEnter={() => playSound("hover")}
